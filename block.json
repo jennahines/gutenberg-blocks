@@ -1,0 +1,14 @@
+{
+	"name": "jmh-blocks",
+	"title": "JMH Blocks",
+	"category": "text",
+	"icon": "edit",
+	"description": "Collection of custom Gutenberg blocks",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "jmh-blocks",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
