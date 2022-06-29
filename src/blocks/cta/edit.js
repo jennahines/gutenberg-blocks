@@ -116,13 +116,13 @@ export default function Edit( { attributes, setAttributes } ) {
             }}
 		>
 			<div 
-				class="cta-overlay" 
+				className="cta-overlay" 
 				style={{ 
 					backgroundColor: overlayColor, 
 					opacity: overlayOpacity,
 				}}
 			></div>
-			<div class="cta-content aligncenter">
+			<div className="cta-content aligncenter">
 				<RichText key="editable"
 					tagName="h2"
 					allowedFormats={ [] }

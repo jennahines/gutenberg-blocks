@@ -78,7 +78,7 @@ function register_blocks() {
 		array(
 			'editor_script' => 'jmhblocks-editor-script',
 			'editor_style'  => 'jmhblocks-editor-style',
-			'style'         => 'jmhblocks-style',
+			'style'         => 'jmhblocks-frontend-style',
 		)
 	);
 	register_block_type(
@@ -86,7 +86,7 @@ function register_blocks() {
 		array(
 			'editor_script' => 'jmhblocks-editor-script',
 			'editor_style'  => 'jmhblocks-editor-style',
-			'style'         => 'jmhblocks-style',
+			'style'         => 'jmhblocks-frontend-style',
 		)
 	);
 }

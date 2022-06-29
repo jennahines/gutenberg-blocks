@@ -40,13 +40,13 @@ export default function save( { attributes } ) {
             }}
 		>
 			<div 
-				class="cta-overlay" 
+				className="cta-overlay" 
 				style={{ 
 					backgroundColor: overlayColor, 
 					opacity: overlayOpacity,
 				}}
 			></div>
-			<div class="cta-content aligncenter">
+			<div className="cta-content aligncenter">
 				<h2 style={ { color: headingColor } }>{ heading }</h2>
 				<p style={ { color: contentColor } }>{ content }</p>
 			</div>
