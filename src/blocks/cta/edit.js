@@ -10,6 +10,7 @@ import {
 	PanelBody, 
 	PanelRow, 
 	Button, 
+	ButtonGroup,
 	RangeControl 
 } from '@wordpress/components';
 import { __ } from "@wordpress/i18n";
@@ -34,6 +35,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		headingColor,
 		content,
 		contentColor,
+		textAlignment,
 		backgroundImage,
 		overlayColor,
 		overlayOpacity,
@@ -44,6 +46,28 @@ export default function Edit( { attributes, setAttributes } ) {
 	return ([
 		<InspectorControls>
 			
+			<PanelBody title={ __( 'Text Settings', 'jmhblocks' ) }>
+				
+				<PanelRow title={ __( 'Text Alignment', 'jmhblocks' ) }>
+					<p><strong>Select the alignment for the headline and content.</strong></p>
+				</PanelRow>
+				<ButtonGroup>
+					<Button 
+						icon="editor-alignleft"
+						onClick={ () => setAttributes( {textAlignment: 'left' } ) }>
+					</Button>
+					<Button 
+						icon="editor-aligncenter"
+						onClick={ () => setAttributes( {textAlignment: 'center' } ) }>
+					</Button>
+					<Button 
+						icon="editor-alignright"
+						onClick={ () => setAttributes( {textAlignment: 'right' } ) }>
+					</Button>
+				</ButtonGroup>
+
+			</PanelBody>
+
 			<PanelBody title={ __( 'Color Settings', 'jmhblocks' ) }>
 
 				<PanelRow title={ __( 'Headline Color', 'jmhblocks' ) }>
@@ -122,21 +146,21 @@ export default function Edit( { attributes, setAttributes } ) {
 					opacity: overlayOpacity,
 				}}
 			></div>
-			<div className="cta-content aligncenter">
+			<div className="cta-content ">
 				<RichText key="editable"
 					tagName="h2"
 					allowedFormats={ [] }
 					placeholder={ __( 'CTA Heading', 'jmhblocks' ) }
 					value={ heading }
 					onChange={ ( newHeading ) => setAttributes( { heading: newHeading } ) }
-					style={ { color: headingColor } }
+					style={ { color: headingColor, textAlign: textAlignment } }
 				/>
 				<RichText key="editable"
 					tagName="p"
 					placeholder={ __( 'An intriguing line of text to get the user to click the button', 'jmhblocks' ) }
 					value={ content }
 					onChange={ ( newContent ) => setAttributes( { content: newContent } ) }
-					style={ { color: contentColor } }
+					style={ { color: contentColor, textAlign: textAlignment } }
 				/>
 			</div>
 		</div>
