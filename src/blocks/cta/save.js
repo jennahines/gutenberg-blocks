@@ -4,7 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { getBlockDefaultClassName } from '@wordpress/blocks';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -19,12 +20,14 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save( { attributes } ) {
 	const blockProps = useBlockProps.save();
+	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
 
 	const {
 		heading,
 		headingColor,
 		content,
 		contentColor,
+		textAlignment,
 		backgroundImage,
 		overlayColor,
 		overlayOpacity,
@@ -40,15 +43,21 @@ export default function save( { attributes } ) {
             }}
 		>
 			<div 
-				className="cta-overlay" 
+				className={ `${blockName}-overlay` }
 				style={{ 
 					backgroundColor: overlayColor, 
 					opacity: overlayOpacity,
 				}}
 			></div>
-			<div className="cta-content aligncenter">
+			<div 
+				className={ `${blockName}-content` }
+				style={{
+					textAlign: textAlignment,
+				}}
+			>
 				<h2 style={ { color: headingColor } }>{ heading }</h2>
 				<p style={ { color: contentColor } }>{ content }</p>
+				<InnerBlocks.Content />
 			</div>
 		</section>
 	);

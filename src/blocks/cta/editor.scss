@@ -1,4 +1,10 @@
-.cta-overlay {
-	position: absolute;
-	inset: 0px;
+.wp-block-jmh-blocks-cta {
+	&-overlay {
+		position: absolute;
+		inset: 0px;
+	}
+	&-content {
+		position: relative;
+		z-index: 1;
+	}
 }

@@ -60,6 +60,10 @@ registerBlockType( 'jmhblocks/cta', {
 			type: 'string',
 			default: '',
 		},
+		textAlignment: {
+			type: 'string',
+			default: 'none',
+		},
 		backgroundImage: {
 			type: 'string',
 			default: null,

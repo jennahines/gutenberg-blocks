@@ -2,8 +2,10 @@ import {
 	ColorPalette, 
 	InspectorControls, 
 	MediaUpload,
+	BlockControls,
+	AlignmentToolbar,
 	RichText, 
-	useBlockProps 
+	InnerBlocks,
 } from '@wordpress/block-editor';
 import { 
 	Panel, 
@@ -14,6 +16,9 @@ import {
 	RangeControl 
 } from '@wordpress/components';
 import { __ } from "@wordpress/i18n";
+import { getBlockDefaultClassName } from '@wordpress/blocks';
+
+const ALLOWED_INNER_BLOCKS = [ 'core/button' ];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -28,7 +33,7 @@ import { __ } from "@wordpress/i18n";
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const blockProps = useBlockProps();
+	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
 
 	const {
 		heading,
@@ -40,35 +45,14 @@ export default function Edit( { attributes, setAttributes } ) {
 		overlayColor,
 		overlayOpacity,
 	} = attributes;
-	
-	
 
 	return ([
 		<InspectorControls>
-			
-			<PanelBody title={ __( 'Text Settings', 'jmhblocks' ) }>
-				
-				<PanelRow title={ __( 'Text Alignment', 'jmhblocks' ) }>
-					<p><strong>Select the alignment for the headline and content.</strong></p>
-				</PanelRow>
-				<ButtonGroup>
-					<Button 
-						icon="editor-alignleft"
-						onClick={ () => setAttributes( {textAlignment: 'left' } ) }>
-					</Button>
-					<Button 
-						icon="editor-aligncenter"
-						onClick={ () => setAttributes( {textAlignment: 'center' } ) }>
-					</Button>
-					<Button 
-						icon="editor-alignright"
-						onClick={ () => setAttributes( {textAlignment: 'right' } ) }>
-					</Button>
-				</ButtonGroup>
 
-			</PanelBody>
-
-			<PanelBody title={ __( 'Color Settings', 'jmhblocks' ) }>
+			<PanelBody 
+				title={ __( 'Color Settings', 'jmhblocks' ) }
+				initialOpen={ false }
+			>
 
 				<PanelRow title={ __( 'Headline Color', 'jmhblocks' ) }>
 					<p><strong>Select a color for the headline.</strong></p>
@@ -88,7 +72,10 @@ export default function Edit( { attributes, setAttributes } ) {
 
 			</PanelBody>
 
-			<PanelBody title={ __( 'Background Settings', 'jmhblocks' ) }>
+			<PanelBody 
+				title={ __( 'Background Settings', 'jmhblocks' ) }
+				initialOpen={ false }
+			>
 
 				<PanelRow title={ __( 'Background Image', 'jmhblocks' ) }>
 					<p><strong>Select an image for the background</strong></p>
@@ -130,8 +117,8 @@ export default function Edit( { attributes, setAttributes } ) {
 
 		</InspectorControls>,
 
-		<div { ...blockProps }
-			className="cta"
+		<div 
+			className={ `${ blockName }` }  
 			style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
@@ -140,28 +127,42 @@ export default function Edit( { attributes, setAttributes } ) {
             }}
 		>
 			<div 
-				className="cta-overlay" 
+				className={ `${blockName}-overlay` }
 				style={{ 
 					backgroundColor: overlayColor, 
 					opacity: overlayOpacity,
 				}}
 			></div>
-			<div className="cta-content ">
+			{
+				<BlockControls>
+					<AlignmentToolbar
+						value={ textAlignment }
+						onChange={ (newTextAlignment) => setAttributes( { textAlignment: newTextAlignment } ) }
+					/>
+				</BlockControls>
+			}
+			<div 
+				className={ `${blockName}-content` }
+				style={{
+					textAlign: textAlignment,
+				}}
+			>
 				<RichText key="editable"
 					tagName="h2"
 					allowedFormats={ [] }
 					placeholder={ __( 'CTA Heading', 'jmhblocks' ) }
 					value={ heading }
 					onChange={ ( newHeading ) => setAttributes( { heading: newHeading } ) }
-					style={ { color: headingColor, textAlign: textAlignment } }
+					style={ { color: headingColor } }
 				/>
 				<RichText key="editable"
 					tagName="p"
 					placeholder={ __( 'An intriguing line of text to get the user to click the button', 'jmhblocks' ) }
 					value={ content }
 					onChange={ ( newContent ) => setAttributes( { content: newContent } ) }
-					style={ { color: contentColor, textAlign: textAlignment } }
+					style={ { color: contentColor } }
 				/>
+				<InnerBlocks allowedBlocks={ ALLOWED_INNER_BLOCKS } />
 			</div>
 		</div>
 	]);
