@@ -49,7 +49,7 @@ registerBlockType( 'jmhblocks/cta', {
 		},
 		headingColor: {
 			type: 'string',
-			default: '',
+			default: '#000000',
 		},
 		content: {
 			type: 'string',
@@ -58,7 +58,7 @@ registerBlockType( 'jmhblocks/cta', {
 		},
 		contentColor: {
 			type: 'string',
-			default: '',
+			default: '#000000',
 		},
 		textAlignment: {
 			type: 'string',
