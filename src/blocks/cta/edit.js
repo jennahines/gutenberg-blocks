@@ -2,23 +2,23 @@ import {
 	ColorPalette, 
 	InspectorControls, 
 	MediaUpload,
-	BlockControls,
-	AlignmentToolbar,
-	RichText, 
 	InnerBlocks,
 } from '@wordpress/block-editor';
 import { 
-	Panel, 
+	Panel,
 	PanelBody, 
 	PanelRow, 
-	Button, 
-	ButtonGroup,
+	Button,
 	RangeControl 
 } from '@wordpress/components';
 import { __ } from "@wordpress/i18n";
 import { getBlockDefaultClassName } from '@wordpress/blocks';
 
-const ALLOWED_INNER_BLOCKS = [ 'core/button' ];
+const JMH_CTA_TEMPLATE = [ 
+	[ 'core/heading', { 'placeholder': 'Call to action headline' } ],
+	[ 'core/paragraph', { 'placeholder': 'Call to action content' } ],
+	[ 'core/button', {} ]
+];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,11 +36,6 @@ export default function Edit( { attributes, setAttributes } ) {
 	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
 
 	const {
-		heading,
-		headingColor,
-		content,
-		contentColor,
-		textAlignment,
 		backgroundImage,
 		overlayColor,
 		overlayOpacity,
@@ -48,29 +43,6 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	return ([
 		<InspectorControls>
-
-			<PanelBody 
-				title={ __( 'Color Settings', 'jmhblocks' ) }
-				initialOpen={ false }
-			>
-
-				<PanelRow title={ __( 'Headline Color', 'jmhblocks' ) }>
-					<p><strong>Select a color for the headline.</strong></p>
-				</PanelRow>
-				<ColorPalette 
-					value={ headingColor }
-					onChange={ ( newHeadingColor ) => setAttributes( { headingColor: newHeadingColor } ) }
-				/>
-
-				<PanelRow title={ __( 'Content Color', 'jmhblocks' ) }>
-					<p><strong>Select a color for the text.</strong></p>
-				</PanelRow>
-				<ColorPalette 
-					value={ contentColor }
-					onChange={ ( newContentColor ) => setAttributes( { contentColor: newContentColor } ) }
-				/>
-
-			</PanelBody>
 
 			<PanelBody 
 				title={ __( 'Background Settings', 'jmhblocks' ) }
@@ -133,36 +105,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					opacity: overlayOpacity,
 				}}
 			></div>
-			{
-				<BlockControls>
-					<AlignmentToolbar
-						value={ textAlignment }
-						onChange={ (newTextAlignment) => setAttributes( { textAlignment: newTextAlignment } ) }
-					/>
-				</BlockControls>
-			}
 			<div 
 				className={ `${blockName}-content` }
-				style={{
-					textAlign: textAlignment,
-				}}
 			>
-				<RichText key="editable"
-					tagName="h2"
-					allowedFormats={ [] }
-					placeholder={ __( 'CTA Heading', 'jmhblocks' ) }
-					value={ heading }
-					onChange={ ( newHeading ) => setAttributes( { heading: newHeading } ) }
-					style={ { color: headingColor } }
-				/>
-				<RichText key="editable"
-					tagName="p"
-					placeholder={ __( 'An intriguing line of text to get the user to click the button', 'jmhblocks' ) }
-					value={ content }
-					onChange={ ( newContent ) => setAttributes( { content: newContent } ) }
-					style={ { color: contentColor } }
-				/>
-				<InnerBlocks allowedBlocks={ ALLOWED_INNER_BLOCKS } />
+				<InnerBlocks template={ JMH_CTA_TEMPLATE } templateLock={ true } />
 			</div>
 		</div>
 	]);

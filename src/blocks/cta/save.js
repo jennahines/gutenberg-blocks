@@ -23,11 +23,6 @@ export default function save( { attributes } ) {
 	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
 
 	const {
-		heading,
-		headingColor,
-		content,
-		contentColor,
-		textAlignment,
 		backgroundImage,
 		overlayColor,
 		overlayOpacity,
@@ -51,12 +46,7 @@ export default function save( { attributes } ) {
 			></div>
 			<div 
 				className={ `${blockName}-content` }
-				style={{
-					textAlign: textAlignment,
-				}}
 			>
-				<h2 style={ { color: headingColor } }>{ heading }</h2>
-				<p style={ { color: contentColor } }>{ content }</p>
 				<InnerBlocks.Content />
 			</div>
 		</section>
