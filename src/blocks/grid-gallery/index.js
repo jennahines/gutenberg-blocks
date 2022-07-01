@@ -33,26 +33,9 @@ registerBlockType( 'jmhblocks/grid-gallery', {
 	icon: 'format-image',
 	category: 'jmh-blocks',
 
-	example: {
-		attributes: {
-			message: 'Grid Gallery',
-			heading: 'Lorem ipsum dolor sit amet'
-		},
-	},
-
-	attributes: {
-		heading: {
-			'type': 'string',
-			'source': 'html',
-		},
-		image: {
-			'type': 'string',
-			default: null,
-		},
-	},
-
 	supports: {
-		
+		anchor: true,
+		html: false
 	},
 	
 	/**
@@ -62,15 +45,5 @@ registerBlockType( 'jmhblocks/grid-gallery', {
 	/**
 	 * @see ./save.js
 	 */
-	save ( { attributes } ) {
-		const {
-			heading,
-		} = attributes;
-
-		return (
-			<div class="grid container">
-				<h2>{ heading }</h2>
-			</div>
-		);
-	},
+	save,
 } );

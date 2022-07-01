@@ -1,6 +1,12 @@
-import { TextControl } from '@wordpress/components';
-import { RichText, BlockControls, useBlockProps } from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 import { __ } from "@wordpress/i18n";
+import { getBlockDefaultClassName } from '@wordpress/blocks';
+
+const JMH_GALLERY_TEMPLATE = [
+	[ 'core/heading', { 'placeholder': 'Gallery Heading' } ],
+	[ 'core/image', {} ]
+];
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -14,29 +20,11 @@ import { __ } from "@wordpress/i18n";
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const blockProps = useBlockProps();
+	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
 
-	const {
-		heading,
-		image
-	} = attributes;
-	
-
-	return ([
-		<BlockControls group="block">
-			
-		</BlockControls>,
-		<div { ...blockProps }>
-			<div class="grid container">
-				<RichText key="editable"
-					tagName="h2"
-					allowedFormats={ [] }
-					placeholder={ __( 'Grid Gallery Title', 'jmhblocks' ) }
-					value={ heading }
-					onChange={ ( value ) => setAttributes( { heading: value } ) }
-				/>
-				
-			</div>
+	return (
+		<div className={ `${ blockName }` }>
+			<InnerBlocks template={ JMH_GALLERY_TEMPLATE } templateLock={ true } />
 		</div>
-	]);
+	);
 }
