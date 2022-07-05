@@ -27,27 +27,15 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'jmhblocks/grid-gallery', {
-	title: 'Grid Gallery',
-	description: 'Block to generate a grid gallery',
-	icon: 'format-image',
+registerBlockType( 'jmhblocks/section-intro', {
+	title: 'Section Intro',
+	description: 'Block to generate a section intro',
+	icon: 'align-left',
 	category: 'jmh-blocks',
 
-	attributes: {
-		gridColumns: {
-			type: 'number',
-			default: 12,
-		},
-		rowHeight: {
-			type: 'number',
-			default: 50,
-		},
-	},
-	
 	supports: {
 		anchor: true,
-		html: false,
-		align: [ 'full', 'wide', 'center' ],
+		html: false
 	},
 	
 	/**

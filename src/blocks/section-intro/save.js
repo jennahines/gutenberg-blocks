@@ -20,17 +20,10 @@ import { getBlockDefaultClassName } from '@wordpress/blocks';
  */
 export default function save( { attributes } ) {
 	const blockProps = useBlockProps.save();
-	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
-
-	const {
-		gridColumns,
-		rowHeight
-	} = attributes;
-
 
 	return (
-		<section { ...blockProps } data-columns={ gridColumns } style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
+		<div { ...blockProps }>
 			<InnerBlocks.Content />
-		</section>
+		</div>
 	);
 }

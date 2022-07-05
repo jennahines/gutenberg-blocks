@@ -82,7 +82,23 @@ function register_blocks() {
 		)
 	);
 	register_block_type(
+		'jmhblocks/grid-gallery-item',
+		array(
+			'editor_script' => 'jmhblocks-editor-script',
+			'editor_style'  => 'jmhblocks-editor-style',
+			'style'         => 'jmhblocks-frontend-style',
+		)
+	);
+	register_block_type(
 		'jmhblocks/cta',
+		array(
+			'editor_script' => 'jmhblocks-editor-script',
+			'editor_style'  => 'jmhblocks-editor-style',
+			'style'         => 'jmhblocks-frontend-style',
+		)
+	);
+	register_block_type(
+		'jmhblocks/section-intro',
 		array(
 			'editor_script' => 'jmhblocks-editor-script',
 			'editor_style'  => 'jmhblocks-editor-style',

@@ -3,11 +3,9 @@ import { PanelBody, PanelRow, RangeControl } from '@wordpress/components';
 import { __ } from "@wordpress/i18n";
 import { getBlockDefaultClassName } from '@wordpress/blocks';
 
-const JMH_GRID_GALLERY_TEMPLATE = [
-	[ 'jmhblocks/section-intro', {} ],
-	[ 'jmhblocks/grid-gallery-item', {} ]
+const JMH_GALLERY_ITEM_TEMPLATE = [
+	[ 'core/image', {} ],
 ];
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -21,44 +19,44 @@ const JMH_GRID_GALLERY_TEMPLATE = [
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const blockName = getBlockDefaultClassName( 'jmhblocks/grid-gallery');
+	const blockName = getBlockDefaultClassName( 'jmhblocks/grid-gallery-item');
 
 	const {
-		gridColumns,
-		rowHeight,
+		gridColumnSpan,
+		gridRowSpan,
 	 } = attributes;
 
 	return ([
 		<InspectorControls>
-			<PanelBody title={ __( 'Grid Settings', 'jmhblocks' )} initialOpen={ true }>
+			<PanelBody title={ __( 'Image Settings', 'jmhblocks' )} initialOpen={ true }>
 				<PanelRow>
-					<p><strong>Select the number of <em>columns</em> for the grid.</strong></p>
+					<p><strong>Select the number of <em>columns</em> the image should span.</strong></p>
 				</PanelRow>
 				<RangeControl
 					min={ 1 }
 					max={ 12 }
 					step={ 1 }
-					value={ gridColumns }
+					value={ gridColumnSpan }
 					label={ __( 'Grid Columns: ', 'jmhblocks' ) }
-					onChange={ ( newColumns ) => setAttributes( { gridColumns: newColumns } ) } 
+					onChange={ ( newColumnSpan ) => setAttributes( { gridColumnSpan: newColumnSpan } ) } 
 				/>
 
 				<PanelRow>
-					<p><strong>Set the height for a single row.</strong></p>
+					<p><strong>Select the number of <em>rows</em> the image should span.</strong></p>
 				</PanelRow>
 				<RangeControl
-					min={ 50 }
-					max={ 300 }
-					step={ 10 }
-					value={ rowHeight }
-					label={ __( 'Row Height: ', 'jmhblocks' ) }
-					onChange={ ( newRowHeight ) => setAttributes( { rowHeight: newRowHeight } ) } 
+					min={ 1 }
+					max={ 12 }
+					step={ 1 }
+					value={ gridRowSpan }
+					label={ __( 'Grid Rows: ', 'jmhblocks' ) }
+					onChange={ ( newRowSpan ) => setAttributes( { gridRowSpan: newRowSpan } ) } 
 				/>
 			</PanelBody>
 		</InspectorControls>,
 		
-		<div data-columns={ gridColumns } style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
-			<InnerBlocks template={ JMH_GRID_GALLERY_TEMPLATE } allowedBlocks={ [ 'jmhblocks/grid-gallery-item' ] } />
+		<div className={ `${ blockName }` } data-column-span={ gridColumnSpan } data-row-span={ gridRowSpan }>
+			<InnerBlocks template={ JMH_GALLERY_ITEM_TEMPLATE } templateLock={ true } />
 		</div>
 	]);
 }

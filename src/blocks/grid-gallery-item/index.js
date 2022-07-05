@@ -27,27 +27,27 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'jmhblocks/grid-gallery', {
-	title: 'Grid Gallery',
-	description: 'Block to generate a grid gallery',
+registerBlockType( 'jmhblocks/grid-gallery-item', {
+	title: 'Grid Gallery Item',
+	description: 'Block to generate a grid gallery item for use in the Grid Gallery block',
 	icon: 'format-image',
 	category: 'jmh-blocks',
+	parent: 'jmhblocks/grid-gallery',
 
 	attributes: {
-		gridColumns: {
+		gridColumnSpan: {
 			type: 'number',
-			default: 12,
+			default: 1,
 		},
-		rowHeight: {
+		gridRowSpan: {
 			type: 'number',
-			default: 50,
-		},
+			default: 1,
+		}
 	},
 	
 	supports: {
 		anchor: true,
-		html: false,
-		align: [ 'full', 'wide', 'center' ],
+		html: false
 	},
 	
 	/**
