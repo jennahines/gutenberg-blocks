@@ -1,14 +1,3 @@
-@mixin define-columns() {
-	@for $i from 1 to 12 {
-		[data-column-span="$i"] {
-			grid-column: $i;
-		}
-	}
-}
-
 [data-type="jmhblocks/grid-gallery-item"] {
 	padding: 2rem;
-
-	@include define-columns();
-
 }
