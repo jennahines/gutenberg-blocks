@@ -9,10 +9,11 @@
 		display: grid;
 		grid-auto-flow: dense;
 		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: auto repeat(12, 100px);
-	
+		grid-template-rows: auto repeat(12, var(--rowSizeMobile, 50px));
+		
 		@media screen and (min-width: 740px) {
 			grid-template-columns: repeat(12, 1fr);
+			grid-template-rows: auto repeat(12, var(--rowSize, 50px));
 		}
 
 		[data-type="jmhblocks/section-intro"] {

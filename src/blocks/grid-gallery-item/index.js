@@ -41,7 +41,7 @@ registerBlockType( 'jmhblocks/grid-gallery-item', {
 		},
 		gridRowSpan: {
 			type: 'number',
-			default: 12,
+			default: 1,
 		},
 		gridColumnSpanMobile: {
 			type: 'number',
@@ -49,7 +49,7 @@ registerBlockType( 'jmhblocks/grid-gallery-item', {
 		},
 		gridRowSpanMobile: {
 			type: 'number',
-			default: 4,
+			default: 1,
 		},
 	},
 	

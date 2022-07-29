@@ -24,19 +24,30 @@ export default function Edit( { attributes, setAttributes } ) {
 	const blockName = getBlockDefaultClassName( 'jmhblocks/grid-gallery');
 
 	const {
-		gridColumns,
 		rowHeight,
+		rowHeightMobile,
 	 } = attributes;
 
 	return ([
 		<InspectorControls>
 			<PanelBody title={ __( 'Grid Settings', 'jmhblocks' )} initialOpen={ true }>
 				<PanelRow>
-					<p><strong>Set the height for a single row.</strong></p>
+					<p><strong>Set the height for a single row on smaller screens.</strong></p>
 				</PanelRow>
 				<RangeControl
-					min={ 50 }
-					max={ 300 }
+					min={ 10 }
+					max={ 500 }
+					step={ 10 }
+					value={ rowHeightMobile }
+					label={ __( 'Row Height Mobile: ', 'jmhblocks' ) }
+					onChange={ ( newRowHeightMobile ) => setAttributes( { rowHeightMobile: newRowHeightMobile } ) } 
+				/>
+				<PanelRow>
+					<p><strong>Set the height for a single row on larger screens.</strong></p>
+				</PanelRow>
+				<RangeControl
+					min={ 10 }
+					max={ 1000 }
 					step={ 10 }
 					value={ rowHeight }
 					label={ __( 'Row Height: ', 'jmhblocks' ) }
@@ -45,7 +56,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			</PanelBody>
 		</InspectorControls>,
 		
-		<div class="grid-gallery" style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
+		<div class="grid-gallery" style={{ '--rowSize': rowHeight, '--rowSizeMobile': rowHeightMobile }}>
 			<InnerBlocks template={ JMH_GRID_GALLERY_TEMPLATE } allowedBlocks={ [ 'jmhblocks/grid-gallery-item' ] } />
 		</div>
 	]);

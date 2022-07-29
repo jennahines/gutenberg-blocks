@@ -36,7 +36,11 @@ registerBlockType( 'jmhblocks/grid-gallery', {
 	attributes: {
 		rowHeight: {
 			type: 'number',
-			default: 50,
+			default: 500,
+		},
+		rowHeightMobile: {
+			type: 'number',
+			default: 200,
 		},
 		align: {
 			type: 'string',
