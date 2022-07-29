@@ -32,18 +32,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		<InspectorControls>
 			<PanelBody title={ __( 'Grid Settings', 'jmhblocks' )} initialOpen={ true }>
 				<PanelRow>
-					<p><strong>Select the number of <em>columns</em> for the grid.</strong></p>
-				</PanelRow>
-				<RangeControl
-					min={ 1 }
-					max={ 12 }
-					step={ 1 }
-					value={ gridColumns }
-					label={ __( 'Grid Columns: ', 'jmhblocks' ) }
-					onChange={ ( newColumns ) => setAttributes( { gridColumns: newColumns } ) } 
-				/>
-
-				<PanelRow>
 					<p><strong>Set the height for a single row.</strong></p>
 				</PanelRow>
 				<RangeControl
@@ -57,7 +45,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			</PanelBody>
 		</InspectorControls>,
 		
-		<div data-columns={ gridColumns } style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
+		<div class="grid-gallery" style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
 			<InnerBlocks template={ JMH_GRID_GALLERY_TEMPLATE } allowedBlocks={ [ 'jmhblocks/grid-gallery-item' ] } />
 		</div>
 	]);

@@ -1,3 +1,84 @@
 [data-type="jmhblocks/grid-gallery"] {
-	padding: 2rem;
+	padding: 1vw;
+
+	.wp-block {
+		max-width: none;
+	}
+
+	.grid-gallery > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		display: grid;
+		grid-auto-flow: dense;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: auto repeat(12, 100px);
+	
+		@media screen and (min-width: 740px) {
+			grid-template-columns: repeat(12, 1fr);
+		}
+
+		[data-type="jmhblocks/section-intro"] {
+			grid-column-start: 1;
+			grid-column-end: -1;
+		}
+
+		[data-type="jmhblocks/grid-gallery-item"] {
+			margin: 0;
+
+			&:has([data-column-span-mobile="1"]) { grid-column: span 1; }
+			&:has([data-column-span-mobile="2"]) { grid-column: span 2; }
+			&:has([data-column-span-mobile="3"]) { grid-column: span 3; }
+			&:has([data-column-span-mobile="4"]) { grid-column: span 4; }
+			&:has([data-column-span-mobile="5"]) { grid-column: span 5; }
+			&:has([data-column-span-mobile="6"]) { grid-column: span 6; }
+			&:has([data-column-span-mobile="7"]) { grid-column: span 7; }
+			&:has([data-column-span-mobile="8"]) { grid-column: span 8; }
+			&:has([data-column-span-mobile="9"]) { grid-column: span 9; }
+			&:has([data-column-span-mobile="10"]) { grid-column: span 10; }
+			&:has([data-column-span-mobile="11"]) { grid-column: span 11; }
+			&:has([data-column-span-mobile="12"]) { grid-column: span 12; }
+
+			&:has([data-row-span-mobile="1"]) { grid-row: span 1; }
+			&:has([data-row-span-mobile="2"]) { grid-row: span 2; }
+			&:has([data-row-span-mobile="3"]) { grid-row: span 3; }
+			&:has([data-row-span-mobile="4"]) { grid-row: span 4; }
+			&:has([data-row-span-mobile="5"]) { grid-row: span 5; }
+			&:has([data-row-span-mobile="6"]) { grid-row: span 6; }
+			&:has([data-row-span-mobile="7"]) { grid-row: span 7; }
+			&:has([data-row-span-mobile="8"]) { grid-row: span 8; }
+			&:has([data-row-span-mobile="9"]) { grid-row: span 9; }
+			&:has([data-row-span-mobile="10"]) { grid-row: span 10; }
+			&:has([data-row-span-mobile="11"]) { grid-row: span 11; }
+			&:has([data-row-span-mobile="12"]) { grid-row: span 12; }
+
+			@media screen and (min-width: 740px) {
+				
+				&:has([data-column-span="1"]) { grid-column: span 1; }
+				&:has([data-column-span="2"]) { grid-column: span 2; }
+				&:has([data-column-span="3"]) { grid-column: span 3; }
+				&:has([data-column-span="4"]) { grid-column: span 4; }
+				&:has([data-column-span="5"]) { grid-column: span 5; }
+				&:has([data-column-span="6"]) { grid-column: span 6; }
+				&:has([data-column-span="7"]) { grid-column: span 7; }
+				&:has([data-column-span="8"]) { grid-column: span 8; }
+				&:has([data-column-span="9"]) { grid-column: span 9; }
+				&:has([data-column-span="10"]) { grid-column: span 10; }
+				&:has([data-column-span="11"]) { grid-column: span 11; }
+				&:has([data-column-span="12"]) { grid-column: span 12; }
+	
+				&:has([data-row-span="1"]) { grid-row: span 1; }
+				&:has([data-row-span="2"]) { grid-row: span 2; }
+				&:has([data-row-span="3"]) { grid-row: span 3; }
+				&:has([data-row-span="4"]) { grid-row: span 4; }
+				&:has([data-row-span="5"]) { grid-row: span 5; }
+				&:has([data-row-span="6"]) { grid-row: span 6; }
+				&:has([data-row-span="7"]) { grid-row: span 7; }
+				&:has([data-row-span="8"]) { grid-row: span 8; }
+				&:has([data-row-span="9"]) { grid-row: span 9; }
+				&:has([data-row-span="10"]) { grid-row: span 10; }
+				&:has([data-row-span="11"]) { grid-row: span 11; }
+				&:has([data-row-span="12"]) { grid-row: span 12; }
+
+			}
+
+		}
+	}
 }

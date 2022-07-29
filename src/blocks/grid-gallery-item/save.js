@@ -25,10 +25,17 @@ export default function save( { attributes } ) {
 	const {
 		gridColumnSpan,
 		gridRowSpan,
+		gridColumnSpanMobile,
+		gridRowSpanMobile,
 	} = attributes;
 
 	return (
-		<div { ...blockProps } data-column-span={ gridColumnSpan } data-row-span={ gridRowSpan }>
+		<div { ...blockProps } 
+			 data-column-span={ gridColumnSpan } 
+			 data-row-span={ gridRowSpan }
+			 data-column-span-mobile={ gridColumnSpanMobile } 
+			 data-row-span-mobile={ gridRowSpanMobile }
+		>
 			<InnerBlocks.Content />
 		</div>
 	);

@@ -23,13 +23,12 @@ export default function save( { attributes } ) {
 	const blockName = getBlockDefaultClassName( 'jmhblocks/cta');
 
 	const {
-		gridColumns,
 		rowHeight
 	} = attributes;
 
 
 	return (
-		<section { ...blockProps } data-columns={ gridColumns } style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
+		<section { ...blockProps } style={{ gridTemplateRows: `auto repeat(12, ${rowHeight}px)` }}>
 			<InnerBlocks.Content />
 		</section>
 	);

@@ -34,13 +34,13 @@ registerBlockType( 'jmhblocks/grid-gallery', {
 	category: 'jmh-blocks',
 
 	attributes: {
-		gridColumns: {
-			type: 'number',
-			default: 12,
-		},
 		rowHeight: {
 			type: 'number',
 			default: 50,
+		},
+		align: {
+			type: 'string',
+			default: 'wide',
 		},
 	},
 	
@@ -49,6 +49,7 @@ registerBlockType( 'jmhblocks/grid-gallery', {
 		html: false,
 		align: [ 'full', 'wide', 'center' ],
 	},
+
 	
 	/**
 	 * @see ./edit.js

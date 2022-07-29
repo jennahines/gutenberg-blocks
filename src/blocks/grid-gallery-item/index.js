@@ -37,19 +37,28 @@ registerBlockType( 'jmhblocks/grid-gallery-item', {
 	attributes: {
 		gridColumnSpan: {
 			type: 'number',
-			default: 1,
+			default: 12,
 		},
 		gridRowSpan: {
 			type: 'number',
-			default: 1,
-		}
+			default: 12,
+		},
+		gridColumnSpanMobile: {
+			type: 'number',
+			default: 4,
+		},
+		gridRowSpanMobile: {
+			type: 'number',
+			default: 4,
+		},
 	},
 	
 	supports: {
 		anchor: true,
 		html: false
 	},
-	
+	parent: [ 'jmhblocks/grid-gallery' ],
+
 	/**
 	 * @see ./edit.js
 	 */
